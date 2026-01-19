@@ -52,7 +52,7 @@
         print(frutas[0])
     ```
 
-* para adicionar um item usa metodos (funções) da lista
+* para adicionar um item usa metodos (funções) da lista, existe diversos metodos para lista
     * ex.:
     ```python
         frutas.append("banana")
