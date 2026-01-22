@@ -214,3 +214,22 @@
         gato1.apresentar()
             
     ```
+
+
+#### usando dotend
+
+
+```bash
+pip install python-dotenv
+```
+```python
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+CLI_KEY = os.environ.get("CLI_KEY")
+
+# Coloque sua chave aqui
+genai.configure(api_key=CLI_KEY)
+```
