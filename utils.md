@@ -233,3 +233,42 @@ CLI_KEY = os.environ.get("CLI_KEY")
 # Coloque sua chave aqui
 genai.configure(api_key=CLI_KEY)
 ```
+
+#
+
+### funções assincronas vs sincronas
+
+* funções assincronas são defenidas pelo prefixo async antes da definição da função "def" 
+    ```python
+        async def teste():
+            
+    ```
+* funções sincronas são defenidas por não ter o prefixo async antes da definição da função "def" 
+    ```python
+        def teste():
+
+    ```
+
+* quando usar o await?
+    * quando a função chamada tiver um asynd na definição
+    ```python
+    # quando essa função for chamada deve se usar o awiat
+    async def teste():
+        return {
+            "teste": "ok"
+        }
+    # quando essa função for chamada não deve se usar o awiat
+    def teste2():
+        teste = await teste() # <-- chamando uma função assincrona
+    ```
+
+#
+
+* ao usar o pydantic precisamos lidar com as conversoes do json
+```python
+    # Convertemos o objeto Pydantic para dicionario antes de salvar
+    books.append(book.model_dump())
+
+```
+* sem isso ele adiciona o objeto literal
+    * [Book(title='string', autor='string', publish_date='2026-01-26T16:46:06.223Z', description='string')]
