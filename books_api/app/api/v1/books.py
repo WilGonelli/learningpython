@@ -1,4 +1,4 @@
-from fastapi import APIRouter, status, Depends
+from fastapi import APIRouter, status, Depends, HTTPException, Path
 from schemas import book
 from services.book_service import BookService, get_book_service
 
@@ -17,7 +17,11 @@ async def get_books(
     List all books with an optional title filter.
     FastAPI automatically converts the JSON result to the 'response_model' format.
     """
-    return await service.get_books(filter_query)
+    try:
+        response =  await service.get_books(filter_query)
+        return response
+    except KeyError:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="livros não encontrado")
 
 @router.post("/", status_code=status.HTTP_201_CREATED)
 async def post_book(
@@ -45,7 +49,7 @@ async def update_book(
 
 @router.delete("/{title}")
 async def delete_book(
-    title: str,
+    title: str = Path(default=None, title="titulo do livro", description="titulo do livro a ser apagado" ),
     service: BookService = Depends(get_book_service)
 ):
     """
