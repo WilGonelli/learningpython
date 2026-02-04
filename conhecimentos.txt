@@ -1,0 +1,38 @@
+1 - fundamentos basicos (sintaxe e tipagem)
+ * tipos primitivos
+ * tipagem dinamica
+ * f-string
+ * input/output
+
+2 - estruturas de dados
+ * listas []
+ * tuplas ()
+ * dicionarios {}
+ * sets
+ * list compreenshions
+
+3 - controle de fluxo e iteração
+ * condicionais
+ * loops
+ * funçoes de apoio
+
+4 - funçoes e organização de codigo
+ * definição de escopo
+ * argumentos
+ * modulos e pacotes
+
+5 - manipulação de erros e arquivos
+ * try/except
+ * gerenciadores de contexto (with)
+
+6 - basico de POO
+ * classes e objetos
+ * metodo __init__
+ * parametro self
+
+7 - parte tecnica do python
+ * pip
+ * pep8
+ * ambiente virtual
+
+bonus - pydantic com fastapi
