@@ -1,38 +1,89 @@
 1 - fundamentos basicos (sintaxe e tipagem)
- * tipos primitivos
- * tipagem dinamica
- * f-string
- * input/output
+ * tipos primitivos - variaveis comum, str, int, float e bool
+ * tipagem dinamica - significa que o tipo de uma variável (inteiro, string, lista, etc.) é determinado automaticamente em tempo de execução pelo interpretador, e não durante a compilação
+ * f-string - são uma forma concisa e rápida de formatar strings, permitindo incorporar variáveis e expressões diretamente no texto
+    nome = "Mundo"
+    print(f"Olá, {nome}!") # Saída: Olá, Mundo!
+ * input/output - funções de entrada e saida(comunicação com usuario)
+    nome = input("Digite seu nome: ") <-- input
+    print(f"Olá, {nome}!") <-- output
 
 2 - estruturas de dados
- * listas []
- * tuplas ()
- * dicionarios {}
- * sets
- * list compreenshions
+ * listas [] - estruturas de dados versáteis, ordenadas e mutáveis, usadas para armazenar coleções de itens (homogêneos ou heterogêneos) dentro de colchetes
+ * tuplas () - estruturas de dados ordenadas e imutáveis, usadas para armazenar coleções de itens (heterogêneos ou não) delimitadas por parênteses
+ * dicionarios {} - coleções desordenadas e mutáveis de pares chave: valor, delimitados por chaves
+ * sets - coleções não ordenadas, mutáveis e de elementos únicos (não permitem duplicatas) defini-se com {} ou com a função set()
+    # Criando um set
+    frutas = {"maçã", "banana", "maçã"} # {'banana', 'maçã'} (removeu a duplicata)
+
+    União (|): Junta tudo de ambos (sem repetir).
+    Interseção (&): Apenas o que eles têm em comum.
+    Diferença (-): O que tem no primeiro, mas não tem no segundo.
+    Diferença Simétrica (^): Tudo o que é exclusivo de cada um (remove o que for comum).
+
+    # Operações de conjunto
+    conjunto_a = {1, 2, 3}
+    conjunto_b = {3, 4, 5}
+
+    uniao = conjunto_a | conjunto_b # {1, 2, 3, 4, 5}
+    interseccao = conjunto_a & conjunto_b # {3}
+    diferenca = conjunto_a - conjunto_b # {1, 2}
+
+    # outro exemplo
+    lista_suja = [1, 2, 2, 3, 4, 4, 4, 5]
+    lista_limpa = list(set(lista_suja))
+ * list compreenshions - é uma forma concisa, elegante e rápida de criar novas listas a partir de objetos iteráveis
+    pares = [x for x in range(10) if x % 2 == 0]. 
 
 3 - controle de fluxo e iteração
- * condicionais
- * loops
- * funçoes de apoio
+ * condicionais - if, else, elif
+ * loops - for e while
+ * funçoes de apoio - sao funções que executam subtasks de uma outra função
 
 4 - funçoes e organização de codigo
- * definição de escopo
- * argumentos
- * modulos e pacotes
+ * definição de escopo - escopo é algoritimo de uma função, ou seja, a tarefa que a função executa
+ * argumentos - os argumentos são os parametros passados para determinada função
+    *args: recebe múltiplos argumentos posicionais como uma tupla.
+    **kwargs: recebe múltiplos argumentos nomeados como um dicionário.
+ * modulos e pacotes - são formas de organizar e reutilizar código.
 
 5 - manipulação de erros e arquivos
- * try/except
- * gerenciadores de contexto (with)
+ * try/except - é usado para tratar erros durante a execução do programa, evitando que ele quebre e permitindo que você controle o que acontece quando ocorre uma exceção.
+    try: # código que pode gerar erro 
+        resultado = 10 / 0 
+    except: # código que será executado se houver erro 
+        print("Ocorreu um erro!")
+    
+    try:
+        numero = int("abc")
+    except ValueError:
+        print("Erro: não foi possível converter para inteiro.")
+
+ * raise - usado para lançar erro manualmente
+    def dividir(a, b):
+        if b == 0:
+            raise ZeroDivisionError("Não é possível dividir por zero!")
+        return a / b
+
+    print(dividir(10, 2))   # funciona
+    print(dividir(10, 0))   # gera erro
+
+ * gerenciadores de contexto (with) - é um recurso que controla a entrada e saída de um bloco de código
+    with open("dados.txt", "r") as arquivo:
+        conteudo = arquivo.read()
+        print(conteudo)
+ 
 
 6 - basico de POO
  * classes e objetos
- * metodo __init__
- * parametro self
+    Classe → é como um molde ou planta. Define atributos (características) e métodos (ações).
+    Objeto → é uma instância da classe, ou seja, algo criado a partir desse molde.
+ * metodo __init__ - método especial chamado construtor, executado quando criamos um objeto.
+ * parametro self - referência ao próprio objeto (necessário em métodos).
 
 7 - parte tecnica do python
- * pip
- * pep8
- * ambiente virtual
+ * pip - É o instalador oficial de pacotes do Python.
+ * pep8 - Um documento chamado Python Enhancement Proposal 8, que define boas práticas de escrita de código.
+ * ambiente virtual - Uma forma de criar um ambiente isolado para cada projeto Python.
 
 bonus - pydantic com fastapi

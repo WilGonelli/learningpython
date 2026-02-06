@@ -24,3 +24,7 @@ CREATE TABLE bill_instance (
     FOREIGN KEY (mounth_id) REFERENCES mounth(id),
     FOREIGN KEY (bill_id) REFERENCES bill(id)
 );
+
+--INSERT
+INSERT INTO bill (name, estimated_value, initial_mounth, final_mounth)
+VALUES ('teste', 23000, 1,1);
