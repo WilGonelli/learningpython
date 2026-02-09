@@ -1,30 +1,23 @@
+DROP TABLE IF EXISTS bill_instance;
+DROP TABLE IF EXISTS bill;
+DROP TABLE IF EXISTS mounth;
+
 -- Tabela de contas (bill)
 CREATE TABLE bill (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     estimated_value INT NOT NULL,
-    initial_mounth INT NOT NULL,
-    final_mounth INT NOT NULL
-);
-
--- Tabela de meses (mounth)
-CREATE TABLE mounth (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL
+    initial_date DATE NOT NULL,
+    final_date DATE NOT NULL
 );
 
 -- Tabela de instâncias de contas (bill_instance)
 CREATE TABLE bill_instance (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    mounth_id INT NOT NULL,
     bill_id INT NOT NULL,
+    month_year DATE NOT NULL,
     paid BOOLEAN NOT NULL DEFAULT FALSE,
     real_value INT NULL,
     paid_date DATE NULL,
-    FOREIGN KEY (mounth_id) REFERENCES mounth(id),
-    FOREIGN KEY (bill_id) REFERENCES bill(id)
+    FOREIGN KEY (bill_id) REFERENCES bill(id) ON DELETE CASCADE
 );
-
---INSERT
-INSERT INTO bill (name, estimated_value, initial_mounth, final_mounth)
-VALUES ('teste', 23000, 1,1);
