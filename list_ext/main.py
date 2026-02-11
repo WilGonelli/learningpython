@@ -3,14 +3,15 @@
 # from pathlib import Path
 
 # pasta = Path("C:\projects\IBM\estudo\learningpython")
+# ignore = [""]
 
 # # Lista arquivos recursivamente
 # for arquivo in pasta.rglob("*"):
 #     if arquivo.is_file():
 #         print(f"Arquivo: {arquivo.name} | Extensão: {arquivo.suffix}")
 
-# # rglob("*") percorre todos os arquivos e subpastas.
-# # suffix retorna a extensão (ex: .txt, .jpg).
+# rglob("*") percorre todos os arquivos e subpastas.
+# suffix retorna a extensão (ex: .txt, .jpg).
 
 
 
@@ -40,24 +41,59 @@
 
 
 
-from pathlib import Path
+# from pathlib import Path
 
-pasta = Path("C:\projects\IBM\estudo\learningpython")
+# pasta = Path("C:\projects\IBM\estudo\learningpython")
+# resultado = []
+# ignorar = ["__pycache__", ".venv", "venv"]
+
+# for item in pasta.rglob("*"):  # percorre recursivamente
+#     if any(folder in item.parts for folder in ignorar):
+#         continue
+#     if item.is_file():
+#         resultado.append({
+#             "file_name": item.stem,   # nome sem extensão
+#             "type": "file",
+#             "ext": item.suffix        # extensão (ex: ".py")
+#         })
+#     elif item.is_dir():
+#         resultado.append({
+#             "file_name": item.name,
+#             "type": "folder",
+#             "ext": ""
+#         })
+
+# for r in resultado:
+#     if r["type"] == "folder":
+#         print(r, end="\n")
+
+
+import os
+
+pasta = "C:/projects/IBM/estudo/learningpython"
+ignorar = ["__pycache__", "node_modules", ".git", ".venv", "venv"]
 resultado = []
 
-for item in pasta.rglob("*"):  # percorre recursivamente
-    if item.is_file():
+for raiz, dirs, arquivos in os.walk(pasta):
+    # Remove todas as pastas indesejadas da lista de diretórios
+    dirs[:] = [d for d in dirs if d not in ignorar]
+
+    # Pastas
+    for d in dirs:
         resultado.append({
-            "file_name": item.stem,   # nome sem extensão
-            "type": "file",
-            "ext": item.suffix        # extensão (ex: ".py")
-        })
-    elif item.is_dir():
-        resultado.append({
-            "file_name": item.name,
+            "file_name": d,
             "type": "folder",
             "ext": ""
         })
+    # Arquivos
+    for f in arquivos:
+        nome, extensao = os.path.splitext(f)
+        resultado.append({
+            "file_name": nome,
+            "type": "file",
+            "ext": extensao
+        })
 
-print(resultado)
-
+for r in resultado:
+    if r["type"] == "folder":
+        print(r, end="\n")
