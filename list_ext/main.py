@@ -70,30 +70,41 @@
 
 import os
 
-pasta = "C:/projects/IBM/estudo/learningpython"
-ignorar = ["__pycache__", "node_modules", ".git", ".venv", "venv"]
-resultado = []
+target_dir = "C:/projects/IBM/estudo/learningpython"
+final_ignore_set = ["__pycache__", "node_modules", ".git", ".venv", "venv"]
+extensions = []
 
-for raiz, dirs, arquivos in os.walk(pasta):
-    # Remove todas as pastas indesejadas da lista de diretórios
-    dirs[:] = [d for d in dirs if d not in ignorar]
+for root, dirs, files in os.walk(target_dir):
+        dirs[:] = [d for d in dirs if d not in final_ignore_set]
 
-    # Pastas
-    for d in dirs:
-        resultado.append({
-            "file_name": d,
-            "type": "folder",
-            "ext": ""
-        })
-    # Arquivos
-    for f in arquivos:
-        nome, extensao = os.path.splitext(f)
-        resultado.append({
-            "file_name": nome,
-            "type": "file",
-            "ext": extensao
-        })
+        for f in files:
+            name, extension = os.path.splitext(f)
+            if extension not in extensions:
+                extensions.append(extension)
 
-for r in resultado:
-    if r["type"] == "folder":
-        print(r, end="\n")
+for e in extensions:
+     print(e)
+
+# for raiz, dirs, arquivos in os.walk(pasta):
+#     # Remove todas as pastas indesejadas da lista de diretórios
+#     dirs[:] = [d for d in dirs if d not in ignorar]
+
+#     # Pastas
+#     for d in dirs:
+#         resultado.append({
+#             "file_name": d,
+#             "type": "folder",
+#             "ext": ""
+#         })
+#     # Arquivos
+#     for f in arquivos:
+#         nome, extensao = os.path.splitext(f)
+#         resultado.append({
+#             "file_name": nome,
+#             "type": "file",
+#             "ext": extensao
+#         })
+
+# for r in resultado:
+#     if r["type"] != "folder":
+#         print(r, end="\n")
