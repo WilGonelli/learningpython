@@ -86,4 +86,4 @@
  * pep8 - Um documento chamado Python Enhancement Proposal 8, que define boas práticas de escrita de código.
  * ambiente virtual - Uma forma de criar um ambiente isolado para cada projeto Python.
 
-bonus - pydantic com fastapi
+

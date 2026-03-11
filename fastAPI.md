@@ -24,7 +24,7 @@
 
 * para executar um projeto usando uvicorn podemos adicionar o seguinte comando ao main do projeto:
 ```python
-    if __name__ == "__main__:
+    if __name__ == "__main__":
         import uvicorn
 
     # metodo run / arquivo e nome  /    host do /
